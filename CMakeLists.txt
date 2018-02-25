@@ -5,4 +5,4 @@ set(CMAKE_CXX_STANDARD 11)
 
 add_executable(ai_hw3
         main.cpp
-        Makefile)
+        Makefile Parser.h Parser.cpp)
