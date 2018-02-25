@@ -12,7 +12,6 @@ Parser::Parser(){
 
 char** Parser::parseFile(std::string fileName)
 {
-	char** gridMap;
 	ifstream theFile;
 	theFile.open(fileName.c_str());
 

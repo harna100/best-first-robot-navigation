@@ -5,7 +5,8 @@ class Parser
 {
 
 	public:
-		int n = -1;
+		char** gridMap;//map to be navigated
+		int n = -1; //dimensions of the grid
 
 		Parser();
 		~Parser();
