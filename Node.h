@@ -10,6 +10,7 @@ struct Node {
     int x;
     int y;
     char rawChar;
+    double weight;
     NodeType nodeType;
 };
 
