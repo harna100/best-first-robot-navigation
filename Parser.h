@@ -3,9 +3,14 @@
 
 class Parser
 {
+
 	public:
+		int n = -1;
+
 		Parser();
 		~Parser();
+		char** parseFile(std::string fileName);
+		int getDimension();
 	private:
 	protected:
 	
