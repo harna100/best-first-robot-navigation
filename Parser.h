@@ -1,6 +1,8 @@
 #ifndef PARSER_H
 #define PARSER_H
 
+#include "Node.h"
+
 class Parser
 {
 
@@ -9,12 +11,14 @@ class Parser
 
 		Parser();
 		~Parser();
-		char** parseFile(std::string fileName);
+		Node** parseFile(std::string fileName);
 		int getDimension();
 	private:
+        int dimension;
 	protected:
-	
-	
+
+
+    NodeType convertToNodeType(char charNode);
 };
 
 #endif

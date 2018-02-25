@@ -6,21 +6,22 @@ using namespace std;
 
 int main(int argc, char **argv){
 	Parser *p = new Parser();
-	char**gridMap = p->parseFile("sampleFile.txt");
-
+	Node**gridMap = p->parseFile("sampleFile.txt");
+	cout << "Parsed file\n";
 	for (int i=0; i<5; ++i)
 	{
 		for (int j=0; j<5; ++j)
 		{
 			if (j==4)
 			{
-				cout<<gridMap[i][j]<<endl;
+				cout<<gridMap[i][j].rawChar<<endl;
 			}
 			else
 			{
-				cout<<gridMap[i][j];
+				cout<<gridMap[i][j].rawChar;
 			}
 		}
 	}
+	cout << "Finished reading grid\n";
 	return 0;
 }

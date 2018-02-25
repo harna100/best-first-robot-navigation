@@ -9,6 +9,7 @@
 struct Node {
     int x;
     int y;
+    char rawChar;
     NodeType nodeType;
 };
 

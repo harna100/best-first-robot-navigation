@@ -9,7 +9,9 @@ enum NodeType {
     Initial,
     Empty,
     Obstacle,
-    Goal
+    Goal,
+    SelectedPath,
+    Unknown
 };
 
 #endif //AI_HW3_NODETYPE_H

@@ -10,9 +10,9 @@ Parser::Parser(){
 	cout << "Created Parser\n";
 };
 
-char** Parser::parseFile(std::string fileName)
+Node** Parser::parseFile(std::string fileName)
 {
-	char** gridMap;
+	Node** gridMap;
 	ifstream theFile;
 	theFile.open(fileName.c_str());
 
@@ -22,18 +22,29 @@ char** Parser::parseFile(std::string fileName)
 	{
 		while(getline(theFile, line))
 		{
+			// first line of file contains the dimension
 			if (lineCount == 0)
 			{
 				n = atoi(line.c_str());
-				gridMap = new char* [n];
+				this->dimension = n;
+				gridMap = new Node* [n];
 			}
 
 			else
 			{
-				gridMap[lineCount-1] = new char[n];
+				gridMap[lineCount-1] = new Node[n];
 				for (int i = 0; i<line.length(); ++i)
 				{
-					gridMap[lineCount-1][i] = line[i];
+				    char currChar = line[i];
+
+
+				    Node currNode = Node();
+				    currNode.x = i;
+				    currNode.y = lineCount-1;
+				    currNode.rawChar = currChar;
+				    currNode.nodeType = this->convertToNodeType(currChar);
+
+					gridMap[lineCount-1][i] = currNode;
 				}
 			}
 			++lineCount;
@@ -44,9 +55,33 @@ char** Parser::parseFile(std::string fileName)
 
 int Parser::getDimension()
 {
-	return n;
+	return this->dimension;
+}
+
+NodeType Parser::convertToNodeType(char charNode){
+    NodeType toReturn;
+    switch(charNode){
+		case '.':
+			toReturn = Empty;
+			break;
+		case 'i':
+			toReturn = Initial;
+			break;
+		case 'g':
+            toReturn = Goal;
+            break;
+        case '+':
+            toReturn = Obstacle;
+            break;
+        case 'o':
+            toReturn = SelectedPath;
+            break;
+		default:
+			toReturn = Unknown;
+    }
+    return toReturn;
 }
 
 Parser::~Parser(){
-
+    cout << "Parser deleted\n";
 }
