@@ -7,16 +7,27 @@
 
 #include <list>
 #include "Node.h"
+#include "GridMap.h"
 
 class Fringe {
     public:
-        virtual void insertNode(Node* toInsert) = 0;
+
+    Fringe(GridMap *gridMap){
+        this->gridMap = gridMap;
+        nodesToCompare = std::list<Node*>();
+    }
+
+    virtual void insertNode(Node* toInsert) = 0;
         virtual Node* popNode() = 0;
         std::list<Node*> getFringe() {
-            return this->nodesToExplore;
+            return this->nodesToCompare;
         };
+        GridMap* getGridMap(){
+            return this->gridMap;
+        }
     private:
-        std::list<Node*> nodesToExplore;
+        std::list<Node*> nodesToCompare;
+        GridMap* gridMap;
     protected:
 };
 

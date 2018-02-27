@@ -18,5 +18,11 @@ void EuclideanFringe::insertNode(Node* toInsert) {
 }
 
 Node *EuclideanFringe::popNode() {
-    return nullptr;
+    Node* toReturn = *(this->getFringe().begin());
+    this->getFringe().pop_front();
+    return toReturn;
+}
+
+EuclideanFringe::EuclideanFringe(GridMap *gridMap) : Fringe(gridMap) {
+
 }

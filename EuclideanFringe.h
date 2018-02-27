@@ -10,7 +10,11 @@
 
 class EuclideanFringe: Fringe{
     public:
-        void insertNode(Node* toInsert) override;
+        EuclideanFringe(GridMap *gridMap);
+private:
+
+public:
+    void insertNode(Node* toInsert) override;
         Node *popNode() override;
     private:
     protected:
