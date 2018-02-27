@@ -8,10 +8,13 @@
 #include <list>
 #include "Node.h"
 
-virtual class Fringe {
+class Fringe {
     public:
-        virtual void insertNode(Node toInsert) = 0;
+        virtual void insertNode(Node* toInsert) = 0;
         virtual Node* popNode() = 0;
+        std::list<Node*> getFringe() {
+            return this->nodesToExplore;
+        };
     private:
         std::list<Node*> nodesToExplore;
     protected:
