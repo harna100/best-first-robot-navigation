@@ -6,7 +6,8 @@ using namespace std;
 
 int main(int argc, char **argv){
 	Parser *p = new Parser();
-	Node**gridMap = p->parseFile("sampleFile.txt");
+	GridMap* gridMap = p->parseFile("sampleFile.txt");
+	Node** grid = gridMap->getGrid();
 	cout << "Parsed file\n";
 	for (int i=0; i<5; ++i)
 	{
@@ -14,11 +15,11 @@ int main(int argc, char **argv){
 		{
 			if (j==4)
 			{
-				cout<<gridMap[i][j].rawChar<<endl;
+				cout<<grid[i][j].rawChar<<endl;
 			}
 			else
 			{
-				cout<<gridMap[i][j].rawChar;
+				cout<<grid[i][j].rawChar;
 			}
 		}
 	}

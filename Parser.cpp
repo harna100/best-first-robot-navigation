@@ -10,9 +10,11 @@ Parser::Parser(){
 	cout << "Created Parser\n";
 };
 
-Node** Parser::parseFile(std::string fileName)
+GridMap* Parser::parseFile(std::string fileName)
 {
 	Node** gridMap;
+	Node goal;
+	Node start;
 	ifstream theFile;
 	theFile.open(fileName.c_str());
 
@@ -45,12 +47,20 @@ Node** Parser::parseFile(std::string fileName)
 				    currNode.nodeType = this->convertToNodeType(currChar);
 
 					gridMap[lineCount-1][i] = currNode;
+
+
+					if(currNode.nodeType == Goal){
+					    goal = currNode;
+					}
+					else if(currNode.nodeType == Initial){
+					    start = currNode;
+					}
 				}
 			}
 			++lineCount;
 		}
 	}
-	return gridMap;
+	return new GridMap(gridMap, goal, start);
 }
 
 int Parser::getDimension()

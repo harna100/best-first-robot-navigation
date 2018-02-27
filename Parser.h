@@ -2,6 +2,7 @@
 #define PARSER_H
 
 #include "Node.h"
+#include "GridMap.h"
 
 class Parser
 {
@@ -12,7 +13,8 @@ class Parser
 
 		Parser();
 		~Parser();
-		Node** parseFile(std::string fileName);
+		GridMap* parseFile(std::string fileName);
+
 		int getDimension();
 	private:
         int dimension;
