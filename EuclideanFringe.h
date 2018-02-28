@@ -15,7 +15,9 @@ private:
 
 public:
     void insertNode(Node* toInsert) override;
-        Node *popNode() override;
+    Node *popNode() override;
+    void calculateWeights() override;
+    void printGridWeights();
     private:
     protected:
 };

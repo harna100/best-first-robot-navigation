@@ -16,10 +16,16 @@ Node GridMap::getStart(){
     return start;
 }
 
-GridMap::GridMap(Node **grid, Node &goal, Node &start) {
+int GridMap::getDimension()
+{
+	return dimension;
+}
+
+GridMap::GridMap(Node **grid, Node &goal, Node &start, int dimension) {
     this->grid = grid;
     this->goal = goal;
     this->start = start;
+    this->dimension = dimension;
 }
 
 GridMap::~GridMap() {

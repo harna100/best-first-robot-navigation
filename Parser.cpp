@@ -15,6 +15,7 @@ GridMap* Parser::parseFile(std::string fileName)
 	Node** gridMap;
 	Node goal;
 	Node start;
+	int dimension;
 	ifstream theFile;
 	theFile.open(fileName.c_str());
 
@@ -27,18 +28,16 @@ GridMap* Parser::parseFile(std::string fileName)
 			// first line of file contains the dimension
 			if (lineCount == 0)
 			{
-				n = atoi(line.c_str());
-				this->dimension = n;
-				gridMap = new Node* [n];
+				dimension = atoi(line.c_str());
+				this->dimension = dimension;
+				gridMap = new Node* [dimension];
 			}
-
 			else
 			{
-				gridMap[lineCount-1] = new Node[n];
-				for (int i = 0; i<line.length(); ++i)
+				gridMap[lineCount-1] = new Node[dimension];
+				for (int i = 0; i<dimension; ++i)
 				{
 				    char currChar = line[i];
-
 
 				    Node currNode = Node();
 				    currNode.x = i;
@@ -47,7 +46,6 @@ GridMap* Parser::parseFile(std::string fileName)
 				    currNode.nodeType = this->convertToNodeType(currChar);
 
 					gridMap[lineCount-1][i] = currNode;
-
 
 					if(currNode.nodeType == Goal){
 					    goal = currNode;
@@ -60,7 +58,7 @@ GridMap* Parser::parseFile(std::string fileName)
 			++lineCount;
 		}
 	}
-	return new GridMap(gridMap, goal, start);
+	return new GridMap(gridMap, goal, start, dimension);
 }
 
 int Parser::getDimension()

@@ -18,13 +18,14 @@ class Fringe {
     }
 
     virtual void insertNode(Node* toInsert) = 0;
-        virtual Node* popNode() = 0;
-        std::list<Node*> getFringe() {
-            return this->nodesToCompare;
-        };
-        GridMap* getGridMap(){
-            return this->gridMap;
-        }
+    virtual Node* popNode() = 0;
+    virtual void calculateWeights() = 0;
+    std::list<Node*> getFringe() {
+        return this->nodesToCompare;
+    };
+    GridMap* getGridMap(){
+        return this->gridMap;
+    }
     private:
         std::list<Node*> nodesToCompare;
         GridMap* gridMap;

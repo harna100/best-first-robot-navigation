@@ -30,13 +30,13 @@ int main(int argc, char **argv){
 	Parser *p = new Parser();
 
 	string fileName = "sampleFile.txt";
-
 	GridMap *forEuclid = p->parseFile(fileName);
 	GridMap *forManhat = p->parseFile(fileName);
 	GridMap *forCombinedPt1 = p->parseFile(fileName);
 	GridMap *forCombinedPt2 = p->parseFile(fileName);
-
 	EuclideanFringe *euclideanFringe = new EuclideanFringe(forEuclid);
+	euclideanFringe->calculateWeights();
+	euclideanFringe->printGridWeights();//this method is just for checking it actually calculated and assigned weights correctly
 
 	return 0;
 }

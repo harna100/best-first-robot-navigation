@@ -10,18 +10,20 @@
 
 class GridMap {
     public:
-    GridMap(Node **grid, Node &goal, Node &start);
+    GridMap(Node **grid, Node &goal, Node &start, int dimension);
 
     virtual ~GridMap();
 
     Node **getGrid();
     Node getGoal();
     Node getStart();
+    int getDimension();
 
-private:
+    private:
         Node** grid;
         Node goal;
         Node start;
+        int dimension;
     protected:
 };
 
