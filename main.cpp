@@ -1,6 +1,7 @@
 #include <iostream>
 #include "Parser.h"
 #include "EuclideanFringe.h"
+#include "ManhattanFringe.h"
 
 
 using namespace std;
@@ -37,6 +38,12 @@ int main(int argc, char **argv){
 	EuclideanFringe *euclideanFringe = new EuclideanFringe(forEuclid);
 	euclideanFringe->calculateWeights();
 	euclideanFringe->printGridWeights();//this method is just for checking it actually calculated and assigned weights correctly
+
+
+	ManhattanFringe *manhattanFringe = new ManhattanFringe(forManhat);
+	manhattanFringe->calculateWeights();
+	manhattanFringe->printGridWeights();
+
 
 	return 0;
 }

@@ -14,22 +14,20 @@ class Fringe {
 
     Fringe(GridMap *gridMap){
         this->gridMap = gridMap;
-        nodesToCompare = std::list<Node*>();
     }
+
+    Fringe() {}
 
     virtual void insertNode(Node* toInsert) = 0;
     virtual Node* popNode() = 0;
     virtual void calculateWeights() = 0;
-    std::list<Node*> getFringe() {
-        return this->nodesToCompare;
-    };
-    GridMap* getGridMap(){
-        return this->gridMap;
-    }
+
     private:
-        std::list<Node*> nodesToCompare;
-        GridMap* gridMap;
+
     protected:
+        GridMap* gridMap;
+        std::list<Node*> nodesToCompare;
+
 };
 
 #endif //AI_HW3_FRINGE_H
