@@ -12,6 +12,7 @@ struct Node {
     char rawChar;
     double weight;
     NodeType nodeType;
+    bool wasVisited;
 };
 
 #endif //AI_HW3_NODE_H
