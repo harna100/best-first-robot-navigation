@@ -86,3 +86,7 @@ void ManhattanFringe::printGridWeights() {
 ManhattanFringe::ManhattanFringe(GridMap *gridMap) {
     this->gridMap = gridMap;
 }
+
+void ManhattanFringe::traverse(Node *node) {
+
+}

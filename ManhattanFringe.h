@@ -15,8 +15,11 @@ public:
     Node *popNode() override;
     void calculateWeights() override;
     void printGridWeights();
+    void traverse(Node *node) override;
 
-    private:
+private:
+
+protected:
 
 
 
