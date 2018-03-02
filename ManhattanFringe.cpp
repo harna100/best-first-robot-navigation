@@ -89,4 +89,26 @@ ManhattanFringe::ManhattanFringe(GridMap *gridMap) {
 
 void ManhattanFringe::traverse(Node *node) {
 
+    int x = node->x;
+    int y = node->y;
+
+    Node** grid = this->gridMap->getGrid();
+
+    if ((y-1) >= 0 && grid[x][y-1].nodeType!=Obstacle)
+    {
+        this->insertNode(&grid[x][y-1]);
+    }
+
+    else if((y+1 < this->gridMap->getDimension()) && grid[x][y+1].nodeType!=Obstacle)
+    {
+        this->insertNode(&grid[x][y+1]);
+    }
+    else if((x-1) >= 0 && grid[x-1][y].nodeType!=Obstacle)
+    {
+        this->insertNode(&grid[x-1][y]);
+    }
+    else if((x+1) < this->gridMap->getDimension() && grid[x+1][y].nodeType != Obstacle)
+    {
+        this->insertNode(&grid[x+1][y]);
+    }
 }
