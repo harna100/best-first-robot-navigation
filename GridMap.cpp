@@ -4,15 +4,15 @@
 
 #include "GridMap.h"
 
-Node **GridMap::getGrid(){
+Node ***GridMap::getGrid(){
     return grid;
 }
 
-Node GridMap::getGoal(){
+Node* GridMap::getGoal(){
     return goal;
 }
 
-Node GridMap::getStart(){
+Node* GridMap::getStart(){
     return start;
 }
 
@@ -21,7 +21,7 @@ int GridMap::getDimension()
 	return dimension;
 }
 
-GridMap::GridMap(Node **grid, Node &goal, Node &start, int dimension) {
+GridMap::GridMap(Node ***grid, Node* goal, Node* start, int dimension) {
     this->grid = grid;
     this->goal = goal;
     this->start = start;

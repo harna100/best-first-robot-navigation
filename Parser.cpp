@@ -12,9 +12,9 @@ Parser::Parser(){
 
 GridMap* Parser::parseFile(std::string fileName)
 {
-	Node** gridMap;
-	Node goal;
-	Node start;
+	Node*** gridMap;
+	Node* goal;
+	Node* start;
 	int dimension;
 	ifstream theFile;
 	theFile.open(fileName.c_str());
@@ -30,29 +30,29 @@ GridMap* Parser::parseFile(std::string fileName)
 			{
 				dimension = atoi(line.c_str());
 				this->dimension = dimension;
-				gridMap = new Node* [dimension];
+				gridMap = new Node** [dimension];
 			}
 			else
 			{
-				gridMap[lineCount-1] = new Node[dimension];
+				gridMap[lineCount-1] = new Node*[dimension];
 				for (int i = 0; i<dimension; ++i)
 				{
 				    char currChar = line[i];
 
-				    Node currNode = Node();
-				    currNode.c = i;
-				    currNode.r = lineCount-1;
-				    currNode.rawChar = currChar;
-				    currNode.nodeType = this->convertToNodeType(currChar);
+				    Node* currNode = new Node();
+				    currNode->c = i;
+				    currNode->r = lineCount-1;
+				    currNode->rawChar = currChar;
+				    currNode->nodeType = this->convertToNodeType(currChar);
 
 					gridMap[lineCount-1][i] = currNode;
-					currNode.wasVisited = false;
+					currNode->wasVisited = false;
 
-					if(currNode.nodeType == Goal){
+					if(currNode->nodeType == Goal){
 					    goal = currNode;
 					}
-					else if(currNode.nodeType == Initial){
-					    currNode.wasVisited = true;
+					else if(currNode->nodeType == Initial){
+					    currNode->wasVisited = true;
 						start = currNode;
 					}
 				}
