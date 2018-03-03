@@ -40,8 +40,8 @@ GridMap* Parser::parseFile(std::string fileName)
 				    char currChar = line[i];
 
 				    Node currNode = Node();
-				    currNode.x = i;
-				    currNode.y = lineCount-1;
+				    currNode.c = i;
+				    currNode.r = lineCount-1;
 				    currNode.rawChar = currChar;
 				    currNode.nodeType = this->convertToNodeType(currChar);
 

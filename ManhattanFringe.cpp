@@ -30,8 +30,8 @@ void ManhattanFringe::calculateWeights() {
     cout << "B" << endl;
     GridMap* gridMap = this->gridMap;
     Node goalNode = gridMap->getGoal();
-    int x1 = goalNode.x;
-    int y1 = goalNode.y;
+    int x1 = goalNode.r;
+    int y1 = goalNode.c;
     int x2;
     int y2;
     int dimension =gridMap->getDimension();
@@ -46,8 +46,8 @@ void ManhattanFringe::calculateWeights() {
             currentNode = &(grid[i][j]);
             if (currentNode->nodeType !=Obstacle)//may need to account for Unknown type?
             {
-                x2 = currentNode->x;
-                y2 = currentNode->y;
+                x2 = currentNode->r;
+                y2 = currentNode->c;
                 currentNode->weight = abs(x2-x1)+abs(y2-y1);
             }
             else
@@ -89,8 +89,8 @@ ManhattanFringe::ManhattanFringe(GridMap *gridMap) {
 
 void ManhattanFringe::traverse(Node *node) {
 
-    int x = node->x;
-    int y = node->y;
+    int x = node->r;
+    int y = node->c;
 
     Node** grid = this->gridMap->getGrid();
 

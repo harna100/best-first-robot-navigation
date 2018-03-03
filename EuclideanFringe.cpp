@@ -35,8 +35,8 @@ void EuclideanFringe::calculateWeights()
     cout<<"A"<<endl;
     GridMap* gridMap = this->gridMap;
     Node goalNode =gridMap->getGoal();
-    int x1 = goalNode.x;
-    int y1 = goalNode.y;
+    int x1 = goalNode.r;
+    int y1 = goalNode.c;
     int x2;
     int y2;
     int dimension =gridMap->getDimension();
@@ -51,8 +51,8 @@ void EuclideanFringe::calculateWeights()
             currentNode = &(grid[i][j]);
             if (currentNode->nodeType !=Obstacle)//may need to account for Unknown type?
             {
-                x2 = currentNode->x;
-                y2 = currentNode->y;
+                x2 = currentNode->r;
+                y2 = currentNode->c;
                 currentNode->weight = sqrt(pow(x2-x1, 2)+pow(y2-y1, 2));
             }
             else
@@ -91,8 +91,8 @@ void EuclideanFringe::printGridWeights()
 
 void EuclideanFringe::traverse(Node *node)
 {
-    int x = node->x;
-    int y = node->y;
+    int x = node->r;
+    int y = node->c;
 
     Node** grid = this->gridMap->getGrid();
 

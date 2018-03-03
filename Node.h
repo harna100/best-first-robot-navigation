@@ -7,16 +7,16 @@
 
 #include "NodeType.h"
 struct Node {
-    int x;
-    int y;
+    int r;//row value
+    int c;//column value
     char rawChar;
     double weight;
     NodeType nodeType;
     bool wasVisited;
 
     bool operator==(const Node &rhs) const {
-        return x == rhs.x &&
-               y == rhs.y;
+        return r == rhs.r &&
+               c == rhs.c;
     }
 
     bool operator!=(const Node &rhs) const {
