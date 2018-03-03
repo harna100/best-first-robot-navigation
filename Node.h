@@ -13,6 +13,15 @@ struct Node {
     double weight;
     NodeType nodeType;
     bool wasVisited;
+
+    bool operator==(const Node &rhs) const {
+        return x == rhs.x &&
+               y == rhs.y;
+    }
+
+    bool operator!=(const Node &rhs) const {
+        return !(rhs == *this);
+    }
 };
 
 #endif //AI_HW3_NODE_H
