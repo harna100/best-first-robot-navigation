@@ -46,12 +46,14 @@ GridMap* Parser::parseFile(std::string fileName)
 				    currNode.nodeType = this->convertToNodeType(currChar);
 
 					gridMap[lineCount-1][i] = currNode;
+					currNode.wasVisited = false;
 
 					if(currNode.nodeType == Goal){
 					    goal = currNode;
 					}
 					else if(currNode.nodeType == Initial){
-					    start = currNode;
+					    currNode.wasVisited = true;
+						start = currNode;
 					}
 				}
 			}

@@ -19,8 +19,11 @@ public:
     void calculateWeights() override;
     void printGridWeights();
     void traverse(Node *node);
+    Node* findPath();
+    void printPath(Node *node);
     private:
     protected:
+    void printGrid();
 };
 
 

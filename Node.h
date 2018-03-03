@@ -13,6 +13,7 @@ struct Node {
     double weight;
     NodeType nodeType;
     bool wasVisited;
+    Node* parent;
 
     bool operator==(const Node &rhs) const {
         return r == rhs.r &&

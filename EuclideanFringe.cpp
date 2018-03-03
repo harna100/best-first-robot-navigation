@@ -98,24 +98,82 @@ void EuclideanFringe::traverse(Node *node)
 
     if ((y-1) >= 0 && grid[x][y-1].nodeType!=Obstacle)
     {
-        this->insertNode(&grid[x][y-1]);
+        Node toInsert = grid[x][y-1];
+        toInsert.parent = node;
+        this->insertNode(&toInsert);
     }
 
-    else if((y+1 < this->gridMap->getDimension()) && grid[x][y+1].nodeType!=Obstacle)
+    if((y+1 < this->gridMap->getDimension()) && grid[x][y+1].nodeType!=Obstacle)
     {
-        this->insertNode(&grid[x][y+1]);
+        Node toInsert = grid[x][y+1];
+        toInsert.parent = node;
+        this->insertNode(&toInsert);
     }
-    else if((x-1) >= 0 && grid[x-1][y].nodeType!=Obstacle)
+    if((x-1) >= 0 && grid[x-1][y].nodeType!=Obstacle)
     {
-        this->insertNode(&grid[x-1][y]);
+        Node toInsert = grid[x-1][y];
+        toInsert.parent = node;
+        this->insertNode(&toInsert);
     }
-    else if((x+1) < this->gridMap->getDimension() && grid[x+1][y].nodeType != Obstacle)
+    if((x+1) < this->gridMap->getDimension() && grid[x+1][y].nodeType != Obstacle)
     {
-        this->insertNode(&grid[x+1][y]);
+        Node toInsert = grid[x+1][y];
+        toInsert.parent = node;
+        this->insertNode(&toInsert);
     }
     
 }
 
+Node* EuclideanFringe::findPath()
+{
+    int startRow = this->gridMap->getStart().r;
+    int startColumn = this->gridMap->getStart().c;
+
+    Node currentNode = this->gridMap->getGrid()[startRow][startColumn];
+    while(currentNode.nodeType!=Goal)
+    {
+        traverse(&currentNode);
+        currentNode = *(this->popNode());
+    }
+    return &currentNode;
+}
+
+
+
 EuclideanFringe::EuclideanFringe(GridMap *gridMap) {
     this->gridMap = gridMap;
+}
+
+void EuclideanFringe::printPath(Node *node) {
+    Node* currentNode = node->parent;
+    while(currentNode!=NULL)
+    {
+        currentNode->nodeType = SelectedPath;
+        currentNode->rawChar = 'o';
+        currentNode = currentNode->parent;
+    }
+    this->printGrid();
+}
+
+void EuclideanFringe::printGrid() {
+    GridMap* gridMap = this->gridMap;
+    int dimension =gridMap->getDimension();
+
+    Node** grid = gridMap->getGrid();
+    Node* currentNode;
+    for (int i = 0; i<dimension; ++i)
+    {
+        for(int j = 0; j<dimension; ++j)
+        {
+            currentNode = &(grid[i][j]);
+            if (j==dimension-1)//may need to account for Unknown type?
+            {
+                cout<<currentNode->rawChar<<endl;
+            }
+            else
+            {
+                cout<<currentNode->rawChar<<" ";
+            }
+        }
+    }
 }
