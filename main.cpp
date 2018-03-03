@@ -39,7 +39,7 @@ int main(int argc, char **argv){
 	euclideanFringe->calculateWeights();
 	euclideanFringe->printGridWeights();//this method is just for checking it actually calculated and assigned weights correctly
 	Node* path = euclideanFringe->findPath();
-//	euclideanFringe->printPath(path);
+	euclideanFringe->printPath(path);
 
 
 	/*ManhattanFringe *manhattanFringe = new ManhattanFringe(forManhat);

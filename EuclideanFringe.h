@@ -14,7 +14,7 @@ class EuclideanFringe: Fringe{
 private:
 
 public:
-    void insertNode(Node* toInsert) override;
+    void insertNode(Node* toInsert,Node* possibleParent) override;
     Node *popNode() override;
     void calculateWeights() override;
     void printGridWeights();

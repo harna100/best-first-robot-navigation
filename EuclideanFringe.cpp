@@ -7,12 +7,13 @@
 #include <iostream>
 
 using namespace std;
-void EuclideanFringe::insertNode(Node* toInsert) {
+void EuclideanFringe::insertNode(Node* toInsert, Node* possibleParent) {
     list<Node*>::iterator iterator;
     if (toInsert->wasVisited==true)
     {
         return;
     }
+    toInsert->parent = possibleParent;
 
     for (iterator = this->nodesToCompare.begin(); iterator != this->nodesToCompare.end(); ++iterator) {
         Node* currentNode = *iterator;
@@ -99,27 +100,23 @@ void EuclideanFringe::traverse(Node *node)
     if ((y-1) >= 0 && grid[x][y-1]->nodeType!=Obstacle)
     {
         Node* toInsert = grid[x][y-1];
-        toInsert->parent = node;
-        this->insertNode(toInsert);
+        this->insertNode(toInsert, node);
     }
 
     if((y+1 < this->gridMap->getDimension()) && grid[x][y+1]->nodeType!=Obstacle)
     {
         Node* toInsert = grid[x][y+1];
-        toInsert->parent = node;
-        this->insertNode(toInsert);
+        this->insertNode(toInsert, node);
     }
     if((x-1) >= 0 && grid[x-1][y]->nodeType!=Obstacle)
     {
         Node* toInsert = grid[x-1][y];
-        toInsert->parent = node;
-        this->insertNode(toInsert);
+        this->insertNode(toInsert, node);
     }
     if((x+1) < this->gridMap->getDimension() && grid[x+1][y]->nodeType != Obstacle)
     {
         Node* toInsert = grid[x+1][y];
-        toInsert->parent = node;
-        this->insertNode(toInsert);
+        this->insertNode(toInsert, node);
     }
     
 }
@@ -132,11 +129,9 @@ Node* EuclideanFringe::findPath()
     Node* currentNode = this->gridMap->getGrid()[startRow][startColumn];
     while(currentNode->nodeType!=Goal)
     {
-        cout << "r: " << currentNode->r<< " c: " <<  currentNode->c<< endl;
         traverse(currentNode);
         currentNode = this->popNode();
     }
-    cout<<"Find path finishing"<<endl;
     return this->gridMap->getGrid()[currentNode->r][currentNode->c];
 }
 
@@ -150,12 +145,10 @@ void EuclideanFringe::printPath(Node *node) {
     Node* currentNode = node->parent;
     while(currentNode->nodeType!=Initial)
     {
-        cout << "r: " << currentNode->r<< " c: " <<  currentNode->c<< endl;
         currentNode->nodeType = SelectedPath;
         currentNode->rawChar = 'o';
         currentNode = currentNode->parent;
     }
-    cout<<"Finished setting selected"<<endl;
     this->printGrid();
 }
 

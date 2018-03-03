@@ -8,7 +8,7 @@
 
 using namespace std;
 
-void ManhattanFringe::insertNode(Node *toInsert) {
+void ManhattanFringe::insertNode(Node *toInsert, Node *possibleParent) {
     list<Node*>::iterator iterator;
 
     for (iterator = this->nodesToCompare.begin(); iterator != this->nodesToCompare.end(); ++iterator) {

@@ -18,7 +18,7 @@ class Fringe {
 
     Fringe() {}
 
-    virtual void insertNode(Node* toInsert) = 0;
+    virtual void insertNode(Node* toInsert, Node* possibleParent) = 0;
     virtual Node* popNode() = 0;
     virtual void calculateWeights() = 0;
     virtual void traverse(Node* node) = 0;
