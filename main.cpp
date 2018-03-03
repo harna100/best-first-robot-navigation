@@ -30,24 +30,31 @@ int main(int argc, char **argv){
 
 	Parser *p = new Parser();
 
-	string fileName = "sampleFile.txt";
+	string fileName = "sample10.txt";
 	GridMap *forEuclid = p->parseFile(fileName);
+	cout << "parsed euclid\n";
 	GridMap *forManhat = p->parseFile(fileName);
+	cout << "parsed manhat\n";
 	//GridMap *forCombinedPt1 = p->parseFile(fileName);
 	//GridMap *forCombinedPt2 = p->parseFile(fileName);
 
 
+	cout << "parsed\n";
     EuclideanFringe *euclideanFringe = new EuclideanFringe(forEuclid);
 	euclideanFringe->calculateWeights();
+	cout << "calculated euclid\n";
 	euclideanFringe->printGridWeights();//this method is just for checking it actually calculated and assigned weights correctly
+	cout << "printed euclid\n";
 	Node* euclidPath = euclideanFringe->findPath();
+	cout << "found euclid path\n";
 	euclideanFringe->printPath(euclidPath);
+	cout << "printed euclid path\n";
 
-	ManhattanFringe *manhattanFringe = new ManhattanFringe(forManhat);
+/*	ManhattanFringe *manhattanFringe = new ManhattanFringe(forManhat);
 	manhattanFringe->calculateWeights();
 	manhattanFringe->printGridWeights();
 	Node* manhatPath = manhattanFringe->findPath();
-	manhattanFringe->printPath(manhatPath);
+	manhattanFringe->printPath(manhatPath);*/
 
 
 
