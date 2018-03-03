@@ -9,16 +9,13 @@
 #include "Fringe.h"
 
 class EuclideanFringe: Fringe{
-    public:
-        EuclideanFringe(GridMap *gridMap);
-private:
-
 public:
+    EuclideanFringe(GridMap *gridMap);
     void insertNode(Node* toInsert,Node* possibleParent) override;
     Node *popNode() override;
     void calculateWeights() override;
     void printGridWeights();
-    void traverse(Node *node);
+    void traverse(Node *node) override;
     Node* findPath();
     void printPath(Node *node);
     private:

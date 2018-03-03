@@ -35,16 +35,21 @@ int main(int argc, char **argv){
 	GridMap *forManhat = p->parseFile(fileName);
 	//GridMap *forCombinedPt1 = p->parseFile(fileName);
 	//GridMap *forCombinedPt2 = p->parseFile(fileName);
-	EuclideanFringe *euclideanFringe = new EuclideanFringe(forEuclid);
+
+
+    EuclideanFringe *euclideanFringe = new EuclideanFringe(forEuclid);
 	euclideanFringe->calculateWeights();
 	euclideanFringe->printGridWeights();//this method is just for checking it actually calculated and assigned weights correctly
-	Node* path = euclideanFringe->findPath();
-	euclideanFringe->printPath(path);
+	Node* euclidPath = euclideanFringe->findPath();
+	euclideanFringe->printPath(euclidPath);
 
-
-	/*ManhattanFringe *manhattanFringe = new ManhattanFringe(forManhat);
+	ManhattanFringe *manhattanFringe = new ManhattanFringe(forManhat);
 	manhattanFringe->calculateWeights();
-	manhattanFringe->printGridWeights();*/
+	manhattanFringe->printGridWeights();
+	Node* manhatPath = manhattanFringe->findPath();
+	manhattanFringe->printPath(manhatPath);
+
+
 
 
 	return 0;
