@@ -1,50 +1,52 @@
 //
-// Created by Paul on 2/28/2018.
+// Created by Christine on 3/3/2018.
 //
 
-#include "ManhattanFringe.h"
-#include <iostream>
+#include "AEuclideanFringe.h"
 #include <cmath>
+#include <iostream>
 
 using namespace std;
 
-void ManhattanFringe::insertNode(Node *toInsert, Node *possibleParent) {
-    list<Node*>::iterator iterator;
+void AEuclideanFringe::insertNode(Node *toInsert, Node *possibleParent) {
 
-    if(toInsert->wasVisited == true){
+    list<Node*>::iterator iterator;
+    if (toInsert->wasVisited==true)
+    {
         return;
     }
-
     toInsert->parent = possibleParent;
 
+    toInsert->totalPathCost = possibleParent->totalPathCost+1;
 
     for (iterator = this->nodesToCompare.begin(); iterator != this->nodesToCompare.end(); ++iterator) {
         Node* currentNode = *iterator;
-        if(toInsert->weight < currentNode->weight){
+        if(toInsert->totalPathCost < currentNode->totalPathCost){
             toInsert->wasVisited = true;
             this->nodesToCompare.insert(iterator, toInsert);
             return;
         }
     }
-    this->nodesToCompare.insert(iterator, toInsert);
     toInsert->wasVisited = true;
+    this->nodesToCompare.insert(iterator, toInsert);
+
 }
 
-Node *ManhattanFringe::popNode() {
+Node *AEuclideanFringe::popNode() {
     Node* toReturn = *(this->nodesToCompare.begin());
     this->nodesToCompare.pop_front();
     return toReturn;
 }
 
-void ManhattanFringe::calculateWeights() {
+void AEuclideanFringe::calculateWeights() {
     GridMap* gridMap = this->gridMap;
-    Node* goalNode = gridMap->getGoal();
+    Node* goalNode =gridMap->getGoal();
     int x1 = goalNode->r;
     int y1 = goalNode->c;
     int x2;
     int y2;
     int dimension =gridMap->getDimension();
-    cout << dimension << endl;
+    cout<<dimension<<endl;
 
     Node*** grid = gridMap->getGrid();
     Node *currentNode;
@@ -57,7 +59,7 @@ void ManhattanFringe::calculateWeights() {
             {
                 x2 = currentNode->r;
                 y2 = currentNode->c;
-                currentNode->weight = abs(x2-x1)+abs(y2-y1);
+                currentNode->weight = sqrt(pow(x2-x1, 2)+pow(y2-y1, 2));
             }
             else
             {
@@ -67,36 +69,7 @@ void ManhattanFringe::calculateWeights() {
     }
 }
 
-
-void ManhattanFringe::printGridWeights() {
-    GridMap* gridMap = this->gridMap;
-    int dimension =gridMap->getDimension();
-
-    Node*** grid = gridMap->getGrid();
-    Node* currentNode;
-    for (int i = 0; i<dimension; ++i)
-    {
-        for(int j = 0; j<dimension; ++j)
-        {
-            currentNode = grid[i][j];
-            if (j==dimension-1)//may need to account for Unknown type?
-            {
-                cout<<currentNode->weight<<endl;
-            }
-            else
-            {
-                cout<<currentNode->weight<<" ";
-            }
-        }
-    }
-
-}
-
-ManhattanFringe::ManhattanFringe(GridMap *gridMap) {
-    this->gridMap = gridMap;
-}
-
-void ManhattanFringe::traverse(Node *node) {
+void AEuclideanFringe::traverse(Node *node) {
 
     int x = node->r;
     int y = node->c;
@@ -126,9 +99,11 @@ void ManhattanFringe::traverse(Node *node) {
     }
 }
 
+AEuclideanFringe::AEuclideanFringe(GridMap *gridMap){
+    this->gridMap = gridMap;
+}
 
-Node* ManhattanFringe::findPath()
-{
+Node *AEuclideanFringe::findPath() {
     int startRow = this->gridMap->getStart()->r;
     int startColumn = this->gridMap->getStart()->c;
 
@@ -141,7 +116,7 @@ Node* ManhattanFringe::findPath()
     return this->gridMap->getGrid()[currentNode->r][currentNode->c];
 }
 
-void ManhattanFringe::printPath(Node *node) {
+void AEuclideanFringe::printPath(Node *node) {
     Node* currentNode = node->parent;
     while(currentNode->nodeType!=Initial)
     {
@@ -152,7 +127,8 @@ void ManhattanFringe::printPath(Node *node) {
     this->printGrid();
 }
 
-void ManhattanFringe::printGrid() {
+void AEuclideanFringe::printGrid()
+{
     GridMap* gridMap = this->gridMap;
     int dimension =gridMap->getDimension();
 

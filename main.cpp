@@ -2,6 +2,8 @@
 #include "Parser.h"
 #include "EuclideanFringe.h"
 #include "ManhattanFringe.h"
+#include "AEuclideanFringe.h"
+#include "AManhattanFringe.h"
 
 
 using namespace std;
@@ -32,26 +34,31 @@ int main(int argc, char **argv){
 
 	string fileName = "sample80.txt";
 	GridMap *forEuclid = p->parseFile(fileName);
-	cout << "parsed euclid\n";
 	GridMap *forManhat = p->parseFile(fileName);
-	cout << "parsed manhat\n";
-	//GridMap *forCombinedPt1 = p->parseFile(fileName);
-	//GridMap *forCombinedPt2 = p->parseFile(fileName);
+	GridMap *forAEuclid = p->parseFile(fileName);
+	GridMap *forAManhat = p->parseFile(fileName);
 
 
-	cout << "parsed\n";
     EuclideanFringe *euclideanFringe = new EuclideanFringe(forEuclid);
 	euclideanFringe->calculateWeights();
-//	euclideanFringe->printGridWeights();//this method is just for checking it actually calculated and assigned weights correctly
 	Node* euclidPath = euclideanFringe->findPath();
 	euclideanFringe->printPath(euclidPath);
 
 
 	ManhattanFringe *manhattanFringe = new ManhattanFringe(forManhat);
 	manhattanFringe->calculateWeights();
-//	manhattanFringe->printGridWeights();
 	Node* manhatPath = manhattanFringe->findPath();
 	manhattanFringe->printPath(manhatPath);
+
+	AEuclideanFringe *aEuclideanFringe = new AEuclideanFringe(forAEuclid);
+	aEuclideanFringe->calculateWeights();
+	Node* aEuclidPath = aEuclideanFringe->findPath();
+	aEuclideanFringe->printPath(aEuclidPath);
+
+    AManhattanFringe *aManhattanFringe = new AManhattanFringe(forAManhat);
+    aManhattanFringe->calculateWeights();
+    Node* aManhatPath = aManhattanFringe->findPath();
+    aManhattanFringe->printPath(aManhatPath);
 
 
 

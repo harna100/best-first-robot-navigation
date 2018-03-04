@@ -35,7 +35,6 @@ Node *EuclideanFringe::popNode() {
 
 void EuclideanFringe::calculateWeights()
 {
-    cout<<"A"<<endl;
     GridMap* gridMap = this->gridMap;
     Node* goalNode =gridMap->getGoal();
     int x1 = goalNode->r;

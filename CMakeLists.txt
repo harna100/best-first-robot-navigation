@@ -9,4 +9,4 @@ configure_file(sample10.txt sample10.txt COPYONLY)
 configure_file(sample80.txt sample80.txt COPYONLY)
 add_executable(ai_hw3
         main.cpp
-        Makefile Parser.h Parser.cpp NodeType.h Node.h Fringe.h EuclideanFringe.cpp EuclideanFringe.h GridMap.cpp GridMap.h ManhattanFringe.cpp ManhattanFringe.h)
+        Makefile Parser.h Parser.cpp NodeType.h Node.h Fringe.h EuclideanFringe.cpp EuclideanFringe.h GridMap.cpp GridMap.h ManhattanFringe.cpp ManhattanFringe.h AEuclideanFringe.h AEuclideanFringe.cpp AManhattanFringe.cpp AManhattanFringe.h)
