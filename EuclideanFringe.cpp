@@ -29,6 +29,9 @@ void EuclideanFringe::insertNode(Node* toInsert, Node* possibleParent) {
 
 Node *EuclideanFringe::popNode() {
     Node* toReturn = *(this->nodesToCompare.begin());
+    if(toReturn == nullptr){
+        throw "No path";
+    }
     this->nodesToCompare.pop_front();
     return toReturn;
 }

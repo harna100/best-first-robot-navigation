@@ -32,6 +32,9 @@ void ManhattanFringe::insertNode(Node *toInsert, Node *possibleParent) {
 
 Node *ManhattanFringe::popNode() {
     Node* toReturn = *(this->nodesToCompare.begin());
+    if(toReturn == nullptr){
+        throw "No path";
+    }
     this->nodesToCompare.pop_front();
     return toReturn;
 }
