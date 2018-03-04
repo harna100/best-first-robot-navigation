@@ -18,3 +18,7 @@ def printGrid(size):
 	print size
 	for c in grid:
 		print ''.join(c)
+
+
+
+printGrid(randint(40,80))
