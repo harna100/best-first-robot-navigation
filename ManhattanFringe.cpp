@@ -21,7 +21,9 @@ void ManhattanFringe::insertNode(Node *toInsert, Node *possibleParent) {
     for (iterator = this->nodesToCompare.begin(); iterator != this->nodesToCompare.end(); ++iterator) {
         Node* currentNode = *iterator;
         if(toInsert->weight < currentNode->weight){
+            toInsert->wasVisited = true;
             this->nodesToCompare.insert(iterator, toInsert);
+            return;
         }
     }
     this->nodesToCompare.insert(iterator, toInsert);

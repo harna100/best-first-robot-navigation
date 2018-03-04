@@ -23,6 +23,8 @@ void EuclideanFringe::insertNode(Node* toInsert, Node* possibleParent) {
             return;
         }
     }
+    toInsert->wasVisited = true;
+    this->nodesToCompare.insert(iterator, toInsert);
 }
 
 Node *EuclideanFringe::popNode() {
