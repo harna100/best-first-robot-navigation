@@ -11,6 +11,7 @@ struct Node {
     int c;//column value
     char rawChar;
     double weight;
+    double totalPathCost;
     NodeType nodeType;
     bool wasVisited;
     Node* parent;
