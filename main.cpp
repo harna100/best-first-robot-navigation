@@ -30,7 +30,7 @@ int main(int argc, char **argv){
 
 	Parser *p = new Parser();
 
-	string fileName = "sample30.txt";
+	string fileName = "sample80.txt";
 	GridMap *forEuclid = p->parseFile(fileName);
 	cout << "parsed euclid\n";
 	GridMap *forManhat = p->parseFile(fileName);
