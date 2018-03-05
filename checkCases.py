@@ -27,5 +27,6 @@ if "No path exists for file" in fullFile3:
 
 # check if case 3 and 4 are different, if they are print it
 if fullFile3 != fullFile4:
+    print "Three and four are different!"
     print case3
     print case4
