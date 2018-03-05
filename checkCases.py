@@ -23,7 +23,7 @@ fullFile3 = open(case3).read()
 fullFile4 = open(case4).read()
 # check if there's no path and print the filename
 if "No path exists for file" in fullFile3:
-    print "No path for: " + fullFile3
+    print "No path for: " + case3
 
 # check if case 3 and 4 are different, if they are print it
 if fullFile3 != fullFile4:

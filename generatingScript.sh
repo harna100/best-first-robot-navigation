@@ -15,6 +15,10 @@ for (( i = 0; i < $COUNT; ++i )); do
 	cd ${SUBDIR}/${i}
 	# generate a grid
 	CURR_FILE=sampleFile${i}.txt
+
+    if [ $((${i} % 20)) -eq 0 ]; then
+        echo Current Progress: ${CURR_FILE}
+    fi
 	python ../../genGrid.py >> ${CURR_FILE}
 	# run it for each case and redirect input into a file
 	for (( j = 1; j < 5; ++j )); do
