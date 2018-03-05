@@ -16,7 +16,7 @@ int main(int argc, char **argv){
 	}
 	else {
 		cout << "No filename provided. Exiting program\n";
-		return;
+		return 1;
 	}
 	bool runAll = true;
 	string specificRun;
