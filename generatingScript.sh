@@ -22,5 +22,7 @@ for (( i = 0; i < $COUNT; ++i )); do
 	done
 	# check the outputs? Find a map where 3&4 are different, need to hand check no paths found	
 
+    cwd=$(pwd)
+    python ../../checkCases.py ${cwd}
 	cd ../..
 done
