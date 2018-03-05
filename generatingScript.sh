@@ -1,7 +1,7 @@
 #!/bin/bash
 # get how many iterations to do from command line
-COUNT=$1
-SUBDIR=./testing
+SUBDIR=./$1
+COUNT=$2
 mkdir ${SUBDIR}
 CASES[0]=""
 CASES[1]="Case1"
@@ -11,8 +11,8 @@ CASES[4]="Case4"
 # iterate that many times
 for (( i = 0; i < $COUNT; ++i )); do
 	# make a directory for the current input
-	mkdir testing/${i}
-	cd testing/${i}
+	mkdir ${SUBDIR}/${i}
+	cd ${SUBDIR}/${i}
 	# generate a grid
 	CURR_FILE=sampleFile${i}.txt
 	python ../../genGrid.py >> ${CURR_FILE}
