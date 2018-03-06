@@ -121,11 +121,13 @@ Node *AEuclideanFringe::findPath() {
 
 void AEuclideanFringe::printPath(Node *node) {
     Node* currentNode = node->parent;
+    this->stepsTaken = 1;
     while(currentNode->nodeType!=Initial)
     {
         currentNode->nodeType = SelectedPath;
         currentNode->rawChar = 'o';
         currentNode = currentNode->parent;
+        ++stepsTaken;
     }
     this->printGrid();
 }
@@ -152,4 +154,7 @@ void AEuclideanFringe::printGrid()
             }
         }
     }
+
+    cout<<"Number of steps taken: "<<this->stepsTaken<<endl;
+    cout<<"Number of nodes: "<<this->nodesToCompare.size()<<endl;
 }

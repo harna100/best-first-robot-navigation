@@ -29,37 +29,40 @@ int main(int argc, char **argv){
 
 	try {
 		if(runAll || specificRun == "1"){
-//		cout << "Running Euclid\n";
+        	cout << "Strategy 1: "<<endl;
 			GridMap *forEuclid = p->parseFile(fileName);
 			EuclideanFringe *euclideanFringe = new EuclideanFringe(forEuclid);
 			euclideanFringe->calculateWeights();
 			Node* euclidPath = euclideanFringe->findPath();
 			euclideanFringe->printPath(euclidPath);
+			cout<<"********************"<<endl;
 		}
 
 
 		if(runAll || specificRun == "2"){
-//		cout << "Running Manhattan\n";
+    		cout << "Strategy 2: \n";
 			GridMap *forManhat = p->parseFile(fileName);
 			ManhattanFringe *manhattanFringe = new ManhattanFringe(forManhat);
 			manhattanFringe->calculateWeights();
 			Node* manhatPath = manhattanFringe->findPath();
 			manhattanFringe->printPath(manhatPath);
+            cout<<"********************"<<endl;
 		}
 
 
 		if(runAll || specificRun == "3"){
-//		cout << "Running Euclid with global cost\n";
+    		cout << "Strategy 3: \n";
 			GridMap *forAEuclid = p->parseFile(fileName);
 			AEuclideanFringe *aEuclideanFringe = new AEuclideanFringe(forAEuclid);
 			aEuclideanFringe->calculateWeights();
 			Node* aEuclidPath = aEuclideanFringe->findPath();
 			aEuclideanFringe->printPath(aEuclidPath);
+            cout<<"********************"<<endl;
 		}
 
 
 		if(runAll || specificRun == "4"){
-//		cout << "Running Manhattan with global cost\n";
+    		cout << "Strategy 4: \n";
 			GridMap *forAManhat = p->parseFile(fileName);
 			AManhattanFringe *aManhattanFringe = new AManhattanFringe(forAManhat);
 			aManhattanFringe->calculateWeights();

@@ -28,6 +28,8 @@ class Fringe {
     protected:
         GridMap* gridMap;
         std::list<Node*> nodesToCompare;
+        int stepsTaken;
+        int numberNodes;
 
 };
 
