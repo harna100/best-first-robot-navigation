@@ -25,9 +25,11 @@ ASSIGNMENT= $(notdir $(shell cd .. && pwd))
 INCLUDES= -I ../include
 
 all: $(SOURCES) $(EXECUTABLE)
-	./$(EXECUTABLE)
+	./$(EXECUTABLE) linsteadTest.txt
 
 allS: $(SOURCES) $(EXECUTABLE)
+
+build: $(SOURCES) $(EXECUTABLE)
 
 $(EXECUTABLE): $(OBJECTS)
 	$(CC) $(INCLUDES) $(LDFLAGS) $(OBJECTS) -o $@
