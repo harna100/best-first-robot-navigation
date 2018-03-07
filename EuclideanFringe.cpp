@@ -180,6 +180,6 @@ void EuclideanFringe::printGrid() {
         }
     }
 
-    cout<<"Number of steps taken: "<<this->stepsTaken<<endl;
+    cout<<"Number of steps taken: "<<this->stepsTaken<<endl;bash
     cout<<"Number of nodes: "<<this->nodesToCompare.size()<<endl;
 }
